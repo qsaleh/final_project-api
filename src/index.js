@@ -28,7 +28,7 @@ function read(file) {
     read(path.resolve(__dirname, `db/seeds/data.sql`))
   ])
     .then(([create, seed]) => {
-      app.get("https://bugi-api.herokuapp.com//api/debug/reset", (request, response) => {
+      app.get("/api/debug/reset", (request, response) => {
         db.query(create)
           .then(() => db.query(seed))
           .then(() => {

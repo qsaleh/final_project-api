@@ -7,6 +7,8 @@ const PORT = process.env.PORT || 19003;
 const app = require("./application");
 const server = require("http").Server(app);
 
+const db = require("./db");
+
 function read(file) {
   return new Promise((resolve, reject) => {
     fs.readFile(

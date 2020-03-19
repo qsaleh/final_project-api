@@ -5,6 +5,7 @@ module.exports = db => {
   router.get("/product-details", (request, response) => {
     db.query(`SELECT * FROM products;`)
       .then(({ rows: getProduct }) => {
+        console.log('getProduct', getProduct);
         response.json(getProduct);
       });
   });

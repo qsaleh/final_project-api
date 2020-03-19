@@ -3,7 +3,7 @@ const getProduct = require('../db/queries');
 
 module.exports = db => {
   router.get("/product-details", (request, response) => {
-    db.query(`SELECT name, picture, description FROM products;`)
+    db.query(`SELECT * FROM products;`)
       .then(({ rows: getProduct }) => {
         response.json(getProduct);
       });

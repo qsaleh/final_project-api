@@ -9,4 +9,4 @@ VALUES ('book', 'description', 5, 2593225330, 'picture', false, true);
 INSERT INTO orders (user_id, date_created, total) VALUES (1, NOW(), 5);
 
 -- voters table seeds here (Example)
-INSERT INTO products_orders (quantity, product_id, order_id) VALUES (2, 1, 1);
+INSERT INTO products_orders (quantity, price, product_id, order_id) VALUES (2, 5, 1, 1);

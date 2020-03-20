@@ -1,13 +1,14 @@
 const { Client } = require("pg");
 const dbParams = require('./dbParams');
-
-const client = new Client({
+const config = process.env.DATABASE_URL || {
   user: 'vagrant',
   password: '123',
   host: 'localhost',
   // port: 5432,
   database: 'bugi'
-});
+};
+
+const client = new Client(config);
 
 client
   .connect()

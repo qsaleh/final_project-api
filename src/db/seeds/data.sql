@@ -3,7 +3,13 @@ INSERT INTO users (name, email, password) VALUES ('Alice', 'Alice@mx.com', 'pass
 
 -- polls table seeds here (Example)
 INSERT INTO products (name, description, price, UPC, picture, recyclable, compostable)
-VALUES ('book', 'description', 5, 2593225330, 'picture', false, true);
+VALUES ('Tops book', 'executive notebook', 5, 025932253300, 'picture', false, false);
+
+INSERT INTO products (name, description, price, UPC, picture, recyclable, compostable)
+VALUES ('Notebook', '3 subject notebook', 4, 667888093731, 'picture', true, false);
+
+INSERT INTO products (name, description, price, UPC, picture, recyclable, compostable)
+VALUES ('Axe Black', 'Aerosol deodorant', 7, 079400641670, 'picture', false, false);
 
 -- options table seeds here (Example)
 INSERT INTO orders (user_id, date_created, total) VALUES (1, NOW(), 5);

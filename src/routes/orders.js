@@ -6,6 +6,10 @@ module.exports = (db) => {
       .then(({ rows: orders }) => {
         return response.json(orders);
       })
+      .catch(e => {
+        console.log(e.message);
+        response.json({ error: true });
+      });
   });
   return router;
 };

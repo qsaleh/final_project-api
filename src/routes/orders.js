@@ -4,7 +4,6 @@ module.exports = (db) => {
   router.get("/orders", (request, response) => {
     db.query(`SELECT name, products_orders.price, quantity FROM products JOIN products_orders ON products.id = products_orders.product_id;`)
       .then(({ rows: orders }) => {
-        console.log(orders, "is it accessing here?");
         return response.json(orders);
       })
       .catch(e => {

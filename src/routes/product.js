@@ -11,7 +11,7 @@ module.exports = db => {
   });
 
   router.get("/product-details/:id", (request, response) => {
-    db.query(`SELECT * FROM products WHERE upc = $1;`, [request.params.id])
+    db.query(`SELECT * FROM products WHERE upc LIKE $1;`, [`%${request.params.id.slice(3, 9)}%`])
       .then(({ rows: getProduct }) => {
         console.log('getProduct', getProduct);
         response.json(getProduct);

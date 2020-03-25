@@ -14,7 +14,7 @@ module.exports = (db) => {
       });
   });
   router.post("/orders", (request, response) => {
-    console.log(request)
+    console.log(request.body)
     // db.query(`
     // INSERT INTO orders (user_id, date_created, total)
     // VALUES (1, Now(), 6)

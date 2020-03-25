@@ -14,29 +14,29 @@ module.exports = (db) => {
       });
   });
   router.post("/orders", (request, response) => {
-    console.log(request.body)
-    // db.query(`
-    // INSERT INTO orders (user_id, date_created, total)
-    // VALUES (1, Now(), 6)
-    // RETURNING *;
-    // `)
-    //   .then(({ rows: orders }) => {
-    //         db.query(`
-    // INSERT INTO products_orders (quantity, product_id, order_id)
-    // VALUES ($1, 2, 6)
-    // RETURNING *;
-    // `)
-    //   .then(({ rows: productsOrders }) => {
-    //     console.log(productsOrders, "is it accessing here?");
-    //     return response.json(productsOrders);
-    //   })
-    //   .catch(e => {
-    //     console.log(e.message);
-    //     response.json({ error: true });
-    //   });
-    //     console.log(orders, "is it accessing here?");
-    //     return response.json(orders);
-    //   })
+    console.log("request.body", request.body)
+    db.query(`
+    INSERT INTO orders (user_id, date_created, total)
+    VALUES (1, Now(), 6)
+    RETURNING *;
+    `)
+      .then(({ rows: orders }) => {
+        console.log(orders, "is it accessing here?");
+        return response.json(orders);
+      })
+      //         db.query(`
+      // INSERT INTO products_orders (quantity, product_id, order_id)
+      // VALUES ($1, 2, 6)
+      // RETURNING *;
+      // `)
+      //   .then(({ rows: productsOrders }) => {
+      // console.log(productsOrders, "is it accessing here?");
+      // return response.json(productsOrders);
+      // })
+      .catch(e => {
+        console.log(e.message);
+        response.json({ error: true });
+      });
     //   .catch(e => {
     //     console.log(e.message);
     //     response.json({ error: true });

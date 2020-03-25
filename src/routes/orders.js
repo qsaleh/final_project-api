@@ -18,12 +18,11 @@ module.exports = (db) => {
     const total = request.body.cartItems.reduce(function (tot, cartItem) {
       return tot + cartItem.subTotal;
     }, 0);
-    console.log("total", total)
     db.query(`
     INSERT INTO orders (user_id, date_created, total)
-    VALUES (1, Now(), 6)
+    VALUES (1, Now(), $1)
     RETURNING *;
-    `)
+    `, [total])
       .then(({ rows: orders }) => {
         console.log(orders, "is it accessing here?");
         return response.json(orders);

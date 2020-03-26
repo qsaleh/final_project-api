@@ -36,20 +36,20 @@ module.exports = (db) => {
         }
         const productsOrdered = request.body.cartItems
         const table = productsOrdered.map(object => {
-          return { productName: object.productName, qty: object.qty, price: object.unitPrice, orderId: response[0]["id"] }
+          return { productName: object.productName, qty: object.qty, orderId: response[0]["id"] }
         })
-        const a = expand(productsOrdered.length, 4)
+        const a = expand(productsOrdered.length, 3)
         console.log("expand", a)
         const flatten = table.map(obj => Object.values(obj)).flat()
         console.log("flatten", flatten)
         db.query(`
-          INSERT INTO products_orders (product_id, quantity, price, order_id)
-          VALUES (${a})
+          INSERT INTO products_orders (product_id, quantity, order_id)
+          VALUES ${a}
           RETURNING *;
         `, flatten)
           .then(({ rows: productsOrders }) => {
             console.log(productsOrders, "is it accessing here?");
-            return response.json(productsOrders);
+            return productsOrders;
           })
           .catch(e => {
             console.log(e.message);

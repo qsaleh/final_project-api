@@ -27,6 +27,10 @@ module.exports = (db) => {
         console.log(orders, "is it accessing here?");
         return orders;
       })
+      .catch(e => {
+        console.log(e.message);
+        return ({ error: true });
+      })
       .then(response => {
         console.log("request.body", request.body.cartItems)
         console.log("response", response)
@@ -58,11 +62,9 @@ module.exports = (db) => {
       })
       .catch(e => {
         console.log(e.message);
-        response.json({ error: true });
+        return ({ error: true });
       });
   });
-
-
   return router;
 };
 

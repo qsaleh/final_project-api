@@ -13,7 +13,7 @@ module.exports = (db) => {
         response.json({ error: true });
       });
   });
-  router.post("/orders", (request, response) => {
+  router.post("/products-orders", (request, response) => {
     console.log("request.body", request.body.cartItems)
     const total = request.body.cartItems.reduce(function (tot, cartItem) {
       return tot + cartItem.subTotal;
@@ -25,10 +25,11 @@ module.exports = (db) => {
     `, [total])
       .then(({ rows: orders }) => {
         console.log(orders, "is it accessing here?");
-        return response.json(orders);
+        return orders;
       })
       .then(response => {
         console.log("request.body", request.body.cartItems)
+        console.log("orders", orders)
         console.log("response", response)
         function expand(rowCount, columnCount, startAt = 1) {
           var index = startAt

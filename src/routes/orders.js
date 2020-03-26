@@ -14,7 +14,7 @@ module.exports = (db) => {
       });
   });
   router.post("/products-orders", (request, res) => {
-    console.log("request.body", request.body)
+    console.log("request.body", request.body.cartItems)
     const total = request.body.cartItems.reduce(function (tot, cartItem) {
       return tot + cartItem.subTotal;
     }, 0);

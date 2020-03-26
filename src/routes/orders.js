@@ -27,23 +27,35 @@ module.exports = (db) => {
         console.log(orders, "is it accessing here?");
         return response.json(orders);
       })
-      //         db.query(`
-      // INSERT INTO products_orders (quantity, product_id, order_id)
-      // VALUES ($1, 2, 6)
-      // RETURNING *;
-      // `)
-      //   .then(({ rows: productsOrders }) => {
-      // console.log(productsOrders, "is it accessing here?");
-      // return response.json(productsOrders);
-      // })
+      .then(response => {
+        console.log("request.body", request.body.cartItems)
+        console.log("response", response)
+        function expand(rowCount, columnCount, startAt = 1) {
+          var index = startAt
+          return Array(rowCount).fill(0).map(v => `(${Array(columnCount).fill(0).map(v => `$${index++}`).join(", ")})`).join(", ")
+        }
+        const productsOrdered = request.body.cartItems
+        const table = productsOrdered.map(object => {
+          return { productName: object.productName, qty: object.qty, orderId: response[0]["id"] }
+        })
+        const a = expand(productsOrdered.length, 3)
+        console.log("expand", a)
+        const flatten = table.map(obj => Object.values(obj).flat())
+        console.log("flatten", flatten)
+        db.query(`
+          INSERT INTO products_orders (quantity, product_id, order_id)
+          VALUES (${a})
+          RETURNING *;
+        `, flatten)
+          .then(({ rows: productsOrders }) => {
+            console.log(productsOrders, "is it accessing here?");
+            return response.json(productsOrders);
+          })
+      })
       .catch(e => {
         console.log(e.message);
         response.json({ error: true });
       });
-    //   .catch(e => {
-    //     console.log(e.message);
-    //     response.json({ error: true });
-    //   });
   });
 
 

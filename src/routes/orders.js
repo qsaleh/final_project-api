@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const getOrders = require("../db/queries");
 module.exports = (db) => {
-  router.get("/orders", (request, response) => {
-    db.query(`SELECT * FROM orders;`)
+  router.get("/products-orders", (request, response) => {
+    db.query(`SELECT * FROM products_orders;`)
       .then(({ rows: orders }) => {
         console.log(orders, "is it accessing here?");
         console.log(request)
@@ -29,7 +29,6 @@ module.exports = (db) => {
       })
       .then(response => {
         console.log("request.body", request.body.cartItems)
-        console.log("orders", orders)
         console.log("response", response)
         function expand(rowCount, columnCount, startAt = 1) {
           var index = startAt

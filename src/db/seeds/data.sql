@@ -4,7 +4,7 @@ INSERT INTO users (name, email, password) VALUES ('Alice', 'Alice@mx.com', 'pass
 INSERT INTO products (name, description, price, UPC, picture, recyclable, compostable)
 VALUES ('Tops book', 'executive notebook', 5, 025932253300, 'picture', false, false);
 INSERT INTO products (name, description, price, UPC, picture, recyclable, compostable)
-VALUES ('Notebook', '3 subject notebook', 4, 667888093731, 'picture', true, false);
+VALUES ('Notebook', '3 subject notebook', 4, 667888093731, '/images/notebook.jpg', true, false);
 INSERT INTO products (name, description, price, UPC, picture, recyclable, compostable)
 VALUES ('Axe Black', 'Aerosol deodorant', 7, 079400641670, 'picture', false, false);
 INSERT INTO products (name, description, price, UPC, picture, recyclable, compostable)
@@ -16,3 +16,10 @@ INSERT INTO orders (user_id, date_created, total) VALUES (1, NOW(), 5);
 -- voters table seeds here (Example)
 INSERT INTO products_orders (quantity, product_id, order_id) VALUES (2, 1, 1);
 
+INSERT INTO products (name, picture)
+VALUES
+('notebook', '/images/notebook.jpg')
+
+('Aerosol deodorant', '/images/axe.jpg')
+
+('Extremely Dry Skin Rescue', '/images/vaseline.jpg')

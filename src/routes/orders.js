@@ -2,7 +2,7 @@ const router = require("express").Router();
 const getOrders = require("../db/queries");
 module.exports = (db) => {
   router.get("/orders", (request, response) => {
-    db.query(`SELECT * FROM products_orders;`)
+    db.query(`SELECT * FROM orders;`)
       .then(({ rows: orders }) => {
         console.log(orders, "is it accessing here?");
         console.log(request)
@@ -13,7 +13,7 @@ module.exports = (db) => {
         response.json({ error: true });
       });
   });
-  router.post("/orders", (request, res) => {
+  router.post("/products_orders", (request, res) => {
     console.log("request.body", request.body.cartItems)
     const total = request.body.cartItems.reduce(function (tot, cartItem) {
       return tot + cartItem.subTotal;

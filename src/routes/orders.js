@@ -13,7 +13,7 @@ module.exports = (db) => {
         response.json({ error: true });
       });
   });
-  router.post("/products_orders", (request, res) => {
+  router.post("/products-orders", (request, res) => {
     console.log("request.body", request.body.cartItems)
     const total = request.body.cartItems.reduce(function (tot, cartItem) {
       return tot + cartItem.subTotal;

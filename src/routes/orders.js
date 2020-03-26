@@ -40,10 +40,10 @@ module.exports = (db) => {
         })
         const a = expand(productsOrdered.length, 3)
         console.log("expand", a)
-        const flatten = table.map(obj => Object.values(obj).flat())
+        const flatten = table.map(obj => Object.values(obj)).flat()
         console.log("flatten", flatten)
         db.query(`
-          INSERT INTO products_orders (quantity, product_id, order_id)
+          INSERT INTO products_orders (product_id, quantity, order_id)
           VALUES (${a})
           RETURNING *;
         `, flatten)
@@ -51,6 +51,10 @@ module.exports = (db) => {
             console.log(productsOrders, "is it accessing here?");
             return response.json(productsOrders);
           })
+          .catch(e => {
+            console.log(e.message);
+            response.json({ error: true });
+          });
       })
       .catch(e => {
         console.log(e.message);

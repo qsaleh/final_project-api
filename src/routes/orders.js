@@ -36,7 +36,7 @@ module.exports = (db) => {
         }
         const productsOrdered = request.body.cartItems
         const table = productsOrdered.map(object => {
-          return { productName: object.productName, qty: object.qty, orderId: response[0]["id"] }
+          return { productId: 1, qty: object.qty, orderId: response[0]["id"] }
         })
         const a = expand(productsOrdered.length, 3)
         console.log("expand", a)

@@ -13,5 +13,6 @@ INSERT INTO products (name, description, price, UPC, picture, recyclable, compos
 VALUES ('Book', 'Traction - Expanded edition', 6, 9781936661831, 'picture', true, false);
 -- options table seeds here (Example)
 INSERT INTO orders (user_id, date_created, total) VALUES (1, NOW(), 5);
+
 -- voters table seeds here (Example)
 INSERT INTO products_orders (quantity, product_id, order_id) VALUES (2, 1, 1);

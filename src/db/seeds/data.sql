@@ -10,7 +10,7 @@ VALUES ('Axe Black', 'Aerosol deodorant', 7, 079400641670, 'https://images.fresh
 INSERT INTO products (name, description, price, UPC, picture, recyclable, compostable)
 VALUES ('Vaseline', 'Extremely Dry Skin Rescue', 6, 305210042247, 'https://pics.drugstore.com/prodimg/437503/900.jpg', false, false);
 INSERT INTO products (name, description, price, UPC, picture, recyclable, compostable)
-VALUES ('Book', 'Traction - Expanded edition', 6, 9781936661831, 'picture', true, false);
+VALUES ('Book', 'Traction - Expanded edition', 6, 9781936661831, 'https://images-na.ssl-images-amazon.com/images/I/51s%2BPBMjJ%2BL._SX331_BO1,204,203,200_.jpg', true, false);
 -- options table seeds here (Example)
 INSERT INTO orders (user_id, date_created, total) VALUES (1, NOW(), 5);
 -- voters table seeds here (Example)
